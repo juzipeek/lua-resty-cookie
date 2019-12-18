@@ -108,7 +108,7 @@ function _M.get(self, key)
         return nil, "no cookie found in the current request"
     end
     if self.cookie_table == nil then
-        self.cookie_table = get_cookie_table(self._cookie)
+        self.cookie_table = _M.get_cookie_table(self._cookie)
     end
 
     return self.cookie_table[key]
@@ -120,7 +120,7 @@ function _M.get_all(self)
     end
 
     if self.cookie_table == nil then
-        self.cookie_table = get_cookie_table(self._cookie)
+        self.cookie_table = _M.get_cookie_table(self._cookie)
     end
 
     return self.cookie_table
