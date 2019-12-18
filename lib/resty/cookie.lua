@@ -32,7 +32,7 @@ local _M = new_tab(0, 2)
 _M._VERSION = '0.01'
 
 
-local function get_cookie_table(text_cookie)
+function _M.get_cookie_table(text_cookie)
     if type(text_cookie) ~= "string" then
         log(ERR, format("expect text_cookie to be \"string\" but found %s",
                 type(text_cookie)))
@@ -67,10 +67,7 @@ local function get_cookie_table(text_cookie)
                 i = j + 1
             end
         elseif state == EXPECT_VALUE then
-            if byte(text_cookie, j) == SEMICOLON
-                    or byte(text_cookie, j) == SPACE
-                    or byte(text_cookie, j) == HTAB
-            then
+            if byte(text_cookie, j) == SEMICOLON then
                 value = sub(text_cookie, i, j - 1)
                 cookie_table[key] = value
 
